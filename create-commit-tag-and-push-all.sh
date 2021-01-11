@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cat version | awk -F '.' '{print $1 "." $2 "." $3 + 1}' > version.tmp
+cat .version | awk -F '.' '{print $1 "." $2 "." $3 + 1}' > version.tmp
 #rm version
 mv version.tmp .version
 
