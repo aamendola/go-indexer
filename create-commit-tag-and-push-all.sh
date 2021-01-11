@@ -1,7 +1,6 @@
 #!/bin/bash
 
 cat .version | awk -F '.' '{print $1 "." $2 "." $3 + 1}' > version.tmp
-#rm version
 mv version.tmp .version
 
 BRANCH=`git branch | awk '{print $2}'`
@@ -11,6 +10,7 @@ echo Branch:$BRANCH Version:$VERSION
 
 git add .
 git commit -m "Automatic commit message"
-git tag -a $VERSION -m "Automatic tag message"
+COMMIT_HASH=`git log --pretty=format:'%h' -n 1`
+git tag -a $VERSION -m "Automatic $COMMIT_HASH"
 git push origin $BRANCH
 git push origin --tags
