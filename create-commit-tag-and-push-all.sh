@@ -5,7 +5,7 @@ cat version | awk -F '.' '{print $1 "." $2 "." $3 + 1}' > version.tmp
 mv version.tmp .version
 
 BRANCH=`git branch | awk '{print $2}'`
-VERSION=`cat version`
+VERSION=`cat .version`
 
 echo Branch:$BRANCH Version:$VERSION
 
