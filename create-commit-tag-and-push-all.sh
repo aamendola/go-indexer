@@ -10,7 +10,7 @@ VERSION=`cat .version`
 echo Branch:$BRANCH Version:$VERSION
 
 git add .
-git commit -m "."
-git tag -a $VERSION -m "."
+git commit -m "Automatic commit message"
+git tag -a $VERSION -m "Automatic tag message"
 git push origin $BRANCH
 git push origin --tags
