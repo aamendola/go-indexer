@@ -11,6 +11,6 @@ echo Branch:$BRANCH Version:$VERSION
 git add .
 git commit -m "Automatic commit message"
 COMMIT_HASH=`git log --pretty=format:'%h' -n 1`
-git tag -a $VERSION -m "Automatic $COMMIT_HASH"
+git tag -a $VERSION -m "Last commit $COMMIT_HASH"
 git push origin $BRANCH
 git push origin --tags
