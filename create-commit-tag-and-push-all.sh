@@ -1,10 +1,10 @@
 #!/bin/bash
 
-cat .version | awk -F '.' '{print $1 "." $2 "." $3 + 1}' > version.tmp
-mv version.tmp .version
-
 BRANCH=`git branch | awk '{print $2}'`
 VERSION=`cat .version`
+
+cat .version | awk -F '.' '{print $1 "." $2 "." $3 + 1}' > version.tmp
+mv version.tmp .version
 
 echo Branch:$BRANCH Version:$VERSION
 
