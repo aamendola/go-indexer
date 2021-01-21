@@ -56,7 +56,6 @@ func (e ElasticSearchConfig) UpdateDoc(document Document) (string, error) {
 	_ = ctx
 
 	esURI := fmt.Sprintf("http://%v:%v", e.Host, e.Port)
-	log.Printf("--> esURI:%s", esURI)
 
 	cfg := elasticsearch.Config{
 		Addresses: []string{
