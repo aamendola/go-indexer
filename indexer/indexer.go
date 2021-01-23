@@ -12,12 +12,13 @@ import (
 	"github.com/elastic/go-elasticsearch/v6"
 )
 
-type ElasticSearchConfig struct {
-	Host  string
-	Port  string
-	Index string
+// Elastic ... 
+type Elastic struct {
+	index string
+	uri   string
 }
 
+// Document ...
 type Document struct {
 	ID          string `json:"id"`
 	Name        string `json:"name"`
@@ -36,30 +37,30 @@ type doc struct {
 	Content string `json:"content"`
 }
 
-//  GetElasticSearchConfig()
-func NewElasticSearchConfig(host, port, index string) (*ElasticSearchConfig, error) {
-	elasticSearchConfig := ElasticSearchConfig{
-		Host:  host,
-		Port:  port,
-		Index: index,
+// NewElastic ...
+func NewElastic(host, port, index string) (*Elastic, error) {
+
+	if len(host) == 0 || len(port) == 0 || len(index) == 0 {
+		return nil, fmt.Errorf("Eslastic configuration error")
 	}
 
-	if len(elasticSearchConfig.Host) == 0 || len(elasticSearchConfig.Port) == 0 || len(elasticSearchConfig.Index) == 0 {
-		return nil, fmt.Errorf("EslasticSearchConfig error")
+	elastic := Elastic{
+		index: index,
+		uri: fmt.Sprintf("http://%v:%v", host, port)
 	}
-	return &elasticSearchConfig, nil
+
+	return &elastic, nil
 }
 
-func (e ElasticSearchConfig) UpdateDoc(document Document) (string, error) {
+// UpdateDoc ...
+func (e Elastic) UpdateDoc(document Document) (string, error) {
 
 	ctx := context.Background()
 	_ = ctx
 
-	esURI := fmt.Sprintf("http://%v:%v", e.Host, e.Port)
-
 	cfg := elasticsearch.Config{
 		Addresses: []string{
-			esURI,
+			e.uri,
 		},
 		Transport: &http.Transport{Proxy: nil},
 	}
@@ -76,7 +77,7 @@ func (e ElasticSearchConfig) UpdateDoc(document Document) (string, error) {
 	b, err := json.Marshal(m)
 	utils.PanicOnError(err)
 
-	update, err := client.Update(e.Index, document.ID, strings.NewReader(string(b)))
+	update, err := client.Update(e.index, document.ID, strings.NewReader(string(b)))
 	utils.PanicOnError(err)
 
 	log.Println(update)
