@@ -12,7 +12,7 @@ import (
 	"github.com/elastic/go-elasticsearch/v6"
 )
 
-// Elastic ... 
+// Elastic ...
 type Elastic struct {
 	index string
 	uri   string
@@ -46,7 +46,7 @@ func NewElastic(host, port, index string) (*Elastic, error) {
 
 	elastic := Elastic{
 		index: index,
-		uri: fmt.Sprintf("http://%v:%v", host, port)
+		uri:   fmt.Sprintf("http://%v:%v", host, port),
 	}
 
 	return &elastic, nil
