@@ -1,9 +1,7 @@
 package indexer
 
-import "io"
-
 // Indexer ...
 type Indexer interface {
-	Update(index, id string, body io.Reader)
+	Update(index, id, content string)
 	// Get(id string) (document interface{})
 }
