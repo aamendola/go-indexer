@@ -41,9 +41,6 @@ func NewElasticsearch(host, port, index string) (Elasticsearch, error) {
 // Update ...
 func (e Elasticsearch) Update(index, id, content string) error {
 
-	// ctx := context.Background()
-	// _ = ctx // ?????????????????????????????????????????
-
 	cfg := elasticsearch.Config{
 		Addresses: []string{
 			e.uri,
@@ -67,5 +64,5 @@ func (e Elasticsearch) Update(index, id, content string) error {
 	utils.PanicOnError(err)
 
 	log.Println(update)
-	return "", nil
+	return nil
 }
