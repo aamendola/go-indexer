@@ -1,4 +1,4 @@
-module github.com/aamendola/indexer
+module github.com/aamendola/go-indexer
 
 go 1.15
 
