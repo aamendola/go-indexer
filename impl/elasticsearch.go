@@ -25,17 +25,17 @@ type doc struct {
 }
 
 // NewElasticsearch ...
-func NewElasticsearch(host, port, index string) (*Elasticsearch, error) {
+func NewElasticsearch(host, port, index string) (Elasticsearch, error) {
 
 	if len(host) == 0 || len(port) == 0 || len(index) == 0 {
-		return nil, fmt.Errorf("Eslastic configuration error")
+		return Elasticsearch{}, fmt.Errorf("Eslastic configuration error")
 	}
 
 	elastic := Elasticsearch{
 		uri: fmt.Sprintf("http://%v:%v", host, port),
 	}
 
-	return &elastic, nil
+	return elastic, nil
 }
 
 // Update ...
