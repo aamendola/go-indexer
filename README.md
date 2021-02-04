@@ -1,1 +1,1 @@
-# indexer
+# go-indexer
