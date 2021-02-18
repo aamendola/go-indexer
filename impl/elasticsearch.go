@@ -58,10 +58,10 @@ func (e Elasticsearch) Update(index, id, content string) error {
 	}
 
 	b, err := json.Marshal(m)
-	utils.Panic(err)
+	logutils.Panic(err)
 
 	update, err := client.Update(index, id, strings.NewReader(string(b)))
-	utils.Panic(err)
+	logutils.Panic(err)
 
 	log.Println(update)
 	logutils.Info(id, update)

@@ -6,6 +6,8 @@ github.com/aamendola/go-utils v1.0.37 h1:gWggg1JWuBm7LWzxmQJvRBFP5E9RxIr7r6eZ7wB
 github.com/aamendola/go-utils v1.0.37/go.mod h1:OD3cxK8kENrXUA7umXSsZWED0q/x4Tk9iJL6+nBty9E=
 github.com/aamendola/go-utils v1.0.40 h1:kp8Xd8w9li5RQPdpaVo5Q/tk3IrqTBLX9f6C8ichHSE=
 github.com/aamendola/go-utils v1.0.40/go.mod h1:OD3cxK8kENrXUA7umXSsZWED0q/x4Tk9iJL6+nBty9E=
+github.com/aamendola/go-utils v1.0.41 h1:vWvyFZ57+l7eDpL3jyEYiTc/RyVha5P5PH22wN1jEYE=
+github.com/aamendola/go-utils v1.0.41/go.mod h1:OD3cxK8kENrXUA7umXSsZWED0q/x4Tk9iJL6+nBty9E=
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/elastic/go-elasticsearch v0.0.0 h1:Pd5fqOuBxKxv83b0+xOAJDAkziWYwFinWnBO0y+TZaA=
 github.com/elastic/go-elasticsearch/v6 v6.8.10 h1:2lN0gJ93gMBXvkhwih5xquldszpm8FlUwqG5sPzr6a8=
