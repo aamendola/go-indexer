@@ -8,6 +8,7 @@ import (
 	"strings"
 
 	utils "github.com/aamendola/go-utils"
+	logutils "github.com/aamendola/go-utils/log"
 	"github.com/elastic/go-elasticsearch/v6"
 )
 
@@ -64,5 +65,7 @@ func (e Elasticsearch) Update(index, id, content string) error {
 	utils.PanicOnError(err)
 
 	log.Println(update)
+	logutils.Info(id, update)
+
 	return nil
 }
