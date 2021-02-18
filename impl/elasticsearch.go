@@ -7,7 +7,6 @@ import (
 	"net/http"
 	"strings"
 
-	utils "github.com/aamendola/go-utils"
 	logutils "github.com/aamendola/go-utils/log"
 	"github.com/elastic/go-elasticsearch/v6"
 )
@@ -50,7 +49,7 @@ func (e Elasticsearch) Update(index, id, content string) error {
 	}
 
 	client, err := elasticsearch.NewClient(cfg)
-	utils.PanicOnError(err)
+	logutils.Panic(err)
 
 	m := messageUpdate{
 		Doc: doc{
@@ -59,10 +58,10 @@ func (e Elasticsearch) Update(index, id, content string) error {
 	}
 
 	b, err := json.Marshal(m)
-	utils.PanicOnError(err)
+	utils.Panic(err)
 
 	update, err := client.Update(index, id, strings.NewReader(string(b)))
-	utils.PanicOnError(err)
+	utils.Panic(err)
 
 	log.Println(update)
 	logutils.Info(id, update)
