@@ -16,14 +16,6 @@ type Elasticsearch struct {
 	uri string
 }
 
-type messageUpdate struct {
-	Doc doc `json:"doc"`
-}
-
-type doc struct {
-	Content string `json:"content"`
-}
-
 // NewElasticsearch ...
 func NewElasticsearch(host, port, index string) (Elasticsearch, error) {
 
@@ -36,37 +28,6 @@ func NewElasticsearch(host, port, index string) (Elasticsearch, error) {
 	}
 
 	return elastic, nil
-}
-
-// Update ...
-func (e Elasticsearch) Update(index, id, content string) error {
-
-	cfg := elasticsearch.Config{
-		Addresses: []string{
-			e.uri,
-		},
-		Transport: &http.Transport{Proxy: nil},
-	}
-
-	client, err := elasticsearch.NewClient(cfg)
-	logutils.Panic(err)
-
-	m := messageUpdate{
-		Doc: doc{
-			Content: content,
-		},
-	}
-
-	b, err := json.Marshal(m)
-	logutils.Panic(err)
-
-	update, err := client.Update(index, id, strings.NewReader(string(b)))
-	logutils.Panic(err)
-
-	log.Println(update)
-	logutils.Info(id, update)
-
-	return nil
 }
 
 // Update ...
