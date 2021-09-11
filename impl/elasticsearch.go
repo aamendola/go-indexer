@@ -68,3 +68,28 @@ func (e Elasticsearch) Update(index, id, content string) error {
 
 	return nil
 }
+
+// Update ...
+func (e Elasticsearch) Update2(index, id string, message interface{}) error {
+
+	cfg := elasticsearch.Config{
+		Addresses: []string{
+			e.uri,
+		},
+		Transport: &http.Transport{Proxy: nil},
+	}
+
+	client, err := elasticsearch.NewClient(cfg)
+	logutils.Panic(err)
+
+	b, err := json.Marshal(message)
+	logutils.Panic(err)
+
+	update, err := client.Update(index, id, strings.NewReader(string(b)))
+	logutils.Panic(err)
+
+	log.Println(update)
+	logutils.Info(id, update)
+
+	return nil
+}
