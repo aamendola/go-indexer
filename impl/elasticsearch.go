@@ -31,7 +31,7 @@ func NewElasticsearch(host, port, index string) (Elasticsearch, error) {
 }
 
 // Update ...
-func (e Elasticsearch) Update2(index, id string, message interface{}) error {
+func (e Elasticsearch) Update(index, id string, message interface{}) error {
 
 	cfg := elasticsearch.Config{
 		Addresses: []string{
